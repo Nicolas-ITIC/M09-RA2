@@ -62,5 +62,39 @@ class Control {
         this.turno = turnoInicial;
     }
 
-    //Continuar codi
+        public synchronized void imprimirYAlternar(
+            String nom, int numero)
+            throws InterruptedException {
+
+        while (!turno.equals(nom)) {
+            wait();
+        }
+
+        System.out.println(nom + " " + numero);
+
+        if (nom.equals("Juan")) {
+            turno = "Pepe";
+        } else {
+            turno = "Juan";
+        }
+
+        notifyAll();
+    }
+
+    public synchronized void terminar(String nom)
+            throws InterruptedException {
+
+        if (nom.equals("Juan")) {
+            while (!pepeTerminado) {
+                wait();
+            }
+        }
+
+        System.out.println("Termina el fil " + nom);
+
+        if (nom.equals("Pepe")) {
+            pepeTerminado = true;
+            notifyAll();
+        }
+    }
 }

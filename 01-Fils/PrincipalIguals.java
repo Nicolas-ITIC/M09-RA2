@@ -4,7 +4,7 @@ public class PrincipalIguals {
 
         Fil pepe = new Fil(
             "Pepe",
-            Thread.NORM_PRIORITY,
+            Thread.MAX_PRIORITY,
             false,
             null,
             0
@@ -12,7 +12,7 @@ public class PrincipalIguals {
 
         Fil juan = new Fil(
             "Juan",
-            Thread.NORM_PRIORITY,
+            Thread.MAX_PRIORITY,
             false,
             null,
             0
